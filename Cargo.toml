@@ -1,7 +1,6 @@
 [workspace]
 members = [
     "account_manager",
-
     "beacon_node",
     "beacon_node/beacon_chain",
     "beacon_node/beacon_processor",
@@ -86,7 +85,9 @@ members = [
 
     "validator_manager",
 
+
     "watch",
+    "consensus/types"
 ]
 resolver = "2"
 
