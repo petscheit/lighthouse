@@ -2455,6 +2455,16 @@ impl<E: EthSpec> BeaconState<E> {
         ))
     }
 
+    /// Specialised deserialisation method that uses the ForkName as context
+    #[allow(clippy::arithmetic_side_effects)]
+    pub fn from_fork_ssz_bytes(bytes: &[u8], fork_name: ForkName) -> Result<Self, ssz::DecodeError> {
+        Ok(map_fork_name!(
+            fork_name,
+            Self,
+            <_>::from_ssz_bytes(bytes)?
+        ))
+    }
+
     #[allow(clippy::arithmetic_side_effects)]
     pub fn apply_pending_mutations(&mut self) -> Result<(), Error> {
         match self {
